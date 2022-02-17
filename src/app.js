@@ -1,3 +1,9 @@
-window.addEventListener("load", () => {
-    console.log(loaded);
-})
+import { initSearchPage } from "./pages/searchPage.js"
+
+const loadApp = () => {
+    initSearchPage();
+}
+
+
+
+window.addEventListener("load", loadApp);
