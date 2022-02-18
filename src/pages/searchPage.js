@@ -5,6 +5,7 @@ import { getSearchElement } from "../view/searchView.js";
 import { SEARCH_FIELD_ID } from "../constants.js";
 import { RESULTS_FIELD_ID } from "../constants.js";
 import { RESULTS_LIST_ID } from "../constants.js";
+import { initMovieInfoElement } from "../pages/infoPage.js";
 
 let searchTimeOutToken = 0;
 
@@ -92,6 +93,7 @@ const chooseMovie = () => {
     movieItems.forEach(movieItem => {
         movieItem.addEventListener("click", (e) => {
             console.log(e.target.id, "imdb id");
+            initMovieInfoElement(e.target.id);
         })
     })
 }
