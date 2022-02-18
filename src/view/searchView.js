@@ -10,6 +10,7 @@ export const getSearchElement = () => {
     <div id="results-field">
         <ul id="results-list"></ul>
     </div>
+    <div id="info-wrapper"></div>
 
     `
     return element;
