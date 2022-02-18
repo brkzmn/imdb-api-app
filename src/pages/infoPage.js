@@ -10,10 +10,12 @@ export const initMovieInfoElement = async (movieID) => {
         console.log(jsonData, "this is movie info details");
     
         //getting movie infos by destructuring 
-        const {original_title, overview, genres} = jsonData;
+
+        const {original_title, overview, genres, release_date, poster_path} = jsonData;
         const infoWrapper = document.getElementById("info-wrapper");
         infoWrapper.innerHTML = "";
-        const infoElement = getMovieInfoElement();
+        const imgSrc = `https://image.tmdb.org/t/p/w500/${poster_path}`
+        const infoElement = getMovieInfoElement(release_date, imgSrc, original_title);
         infoWrapper.appendChild(infoElement);
         const movieTitle = document.getElementById("movie-title");
         movieTitle.innerHTML = original_title;
@@ -28,9 +30,8 @@ export const initMovieInfoElement = async (movieID) => {
         <h2>"${error.message}"</h2>
         `
     }
-
-    
 };
+
 const getMovieGenre = (genreArr) => {
     genreArr.forEach( genre => {
         const genreItem = document.createElement("li");
