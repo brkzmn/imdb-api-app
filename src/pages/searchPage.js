@@ -44,22 +44,24 @@ const showResults = () => {
         if(e.keyCode === 13) {
             setTimeout(() => {
                 searchMovies(e.target.value)
-                // searchMovies()
             },250);
         }
     } );
 }
 
 const searchMovies = async (query) => {
-    const searchUrl = `https://www.omdbapi.com/?apikey=fc83c46c&s=${query}`
+    const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=0ebff7764b918b4ccc3850487ed1f39a&language=en-US&query=${query}&page=1`
+    // const searchUrl = `https://www.omdbapi.com/?apikey=fc83c46c&s=${query}`
     // const searchUrl = `https://imdb-api.com/en/API/Trailer/k_dymzyouh/tt1375666`
 
     console.log(searchUrl);
     try {
         const response = await fetch(searchUrl);
         const jsonData = await response.json();
-        // console.log(jsonData);
-        renderResults(jsonData.Search);
+        console.log(jsonData);
+        const list = document.getElementById(RESULTS_LIST_ID);
+        list.innerHTML = "";
+        renderResults(jsonData.results);
         
     } catch (error) {
         console.log(error.message);
@@ -75,8 +77,8 @@ const renderResults = (resultsArr) => {
     list.innerHTML = "";
     resultsArr.forEach(movieInfo => {
         const movieItem = document.createElement("li");
-        movieItem.innerText = movieInfo.Title;
-        movieItem.id = movieInfo.imdbID;
+        movieItem.innerText = movieInfo.title;
+        movieItem.id = movieInfo.id;
         list.appendChild(movieItem);
     });
 
@@ -89,7 +91,7 @@ const chooseMovie = () => {
     console.log(movieItems);
     movieItems.forEach(movieItem => {
         movieItem.addEventListener("click", (e) => {
-            console.log(e.target.id, "imdb id'si");
+            console.log(e.target.id, "imdb id");
         })
     })
 }
