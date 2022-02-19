@@ -37,17 +37,32 @@ const showResults = () => {
         },250);
     } ); */
     searchFieldEl.addEventListener("keyup", (e) => {
+
         if(e.target.value.trim().length === 0) {
             const list = document.getElementById(RESULTS_LIST_ID);
             list.innerHTML = "please write a movie name";
             return;
         }
-        if(e.keyCode === 13) {
-            setTimeout(() => {
-                searchMovies(e.target.value)
-            },250);
-        }
+        clearTimeout(searchTimeOutToken);
+        searchTimeOutToken = setTimeout(() => {
+            searchMovies(e.target.value)
+        },250);
+
+
+        // if(e.keyCode === 13) {
+        //     setTimeout(() => {
+        //         searchMovies(e.target.value)
+        //     },250);
+        // }
     } );
+    searchFieldEl.addEventListener("click", () => {
+        const elems = document.querySelectorAll('.dropdown-trigger');
+        M.Dropdown.init(elems, {
+            coverTrigger : false,
+
+        });
+
+    })
 }
 
 const searchMovies = async (query) => {
@@ -62,6 +77,8 @@ const searchMovies = async (query) => {
         console.log(jsonData);
         const list = document.getElementById(RESULTS_LIST_ID);
         list.innerHTML = "";
+        const droplist = document.getElementById("dropdown1");
+        droplist.innerHTML = "";
         renderResults(jsonData.results);
         
     } catch (error) {
@@ -76,11 +93,14 @@ const renderResults = (resultsArr) => {
     const list = document.getElementById(RESULTS_LIST_ID);
     console.log(resultsArr);
     list.innerHTML = "";
+    const droplist = document.getElementById("dropdown1");
+    droplist.innerHTML = "";
     resultsArr.forEach(movieInfo => {
         const movieItem = document.createElement("li");
         movieItem.innerText = movieInfo.title;
         movieItem.id = movieInfo.id;
-        list.appendChild(movieItem);
+        // list.appendChild(movieItem);
+        droplist.appendChild(movieItem);
     });
 
     chooseMovie();
