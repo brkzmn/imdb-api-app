@@ -41,12 +41,25 @@
 }
 #info-wrapper {
 
-    background-color: #E2B740;
+    background-color: #313131;
     width: 80%;
     margin: auto;
     min-height: 70%;
     padding: 10px;
 }
+
+#info-section {
+    display: flex;
+}
+
+#info-section:first-child {
+    width: 45%;
+}
+
+#movie-plot {
+    width: 45%;
+}
+
 
 #search-wrapper {
     width: 100vw;
@@ -72,4 +85,13 @@
 input {
     color: white;
     max-width: 80%;
+}
+
+#search-field:focus {
+    border-bottom: 2px solid #E2B740;
+    box-shadow: none;
+} 
+
+a.btn {
+    background-color: #E2B740;
 }
