@@ -63,3 +63,12 @@
     border-bottom-right-radius: 50%; */
     border-radius: 20%;
 }
+
+.dropdown-content {
+    min-width: 80%;
+}
+
+input {
+    color: white;
+    max-width: 80%;
+}
