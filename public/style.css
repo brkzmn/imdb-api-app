@@ -42,7 +42,8 @@
 #info-wrapper {
 
     background-color: #E2B740;
-    width: 60%;
+    width: 80%;
+    margin: auto;
     min-height: 70%;
     padding: 10px;
 }
