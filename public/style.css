@@ -95,3 +95,15 @@ input {
 a.btn {
     background-color: #E2B740;
 }
+
+label {
+    background-color: #FBD74A;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    height: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
