@@ -14,6 +14,7 @@ export const getMovieInfoElement = (date, imgSrc, imgAlt) => {
         </div>
         <div id="movie-plot"></div>
     </div>
+    <a class="waves-effect waves-light btn">Watch Trailer</a>
     `
     return element;
 }
