@@ -22,20 +22,6 @@ export const initSearchPage = () => {
 
 const showResults = () => {
     const searchFieldEl = document.getElementById(SEARCH_FIELD_ID);
-/*     searchFieldEl.addEventListener("keyup", (e) => {
-        console.log(e.target.value);
-
-        clearTimeout(searchTimeOutToken);
-
-        if(e.target.value.trim().length === 0) {
-            return;
-        }
-
-        searchTimeOutToken = setTimeout(() => {
-            searchMovies(e.target.value)
-            // searchMovies()
-        },250);
-    } ); */
     searchFieldEl.addEventListener("keyup", (e) => {
 
         if(e.target.value.trim().length === 0) {
@@ -43,26 +29,17 @@ const showResults = () => {
             list.innerHTML = "please write a movie name";
             return;
         }
-        clearTimeout(searchTimeOutToken);
-        searchTimeOutToken = setTimeout(() => {
-            searchMovies(e.target.value)
-        },250);
-
-
-        // if(e.keyCode === 13) {
-        //     setTimeout(() => {
-        //         searchMovies(e.target.value)
-        //     },250);
-        // }
-    } );
-    searchFieldEl.addEventListener("click", () => {
         const elems = document.querySelectorAll('.dropdown-trigger');
         M.Dropdown.init(elems, {
             coverTrigger : false,
-
         });
+    } );
 
-    })
+    const resultsTrigger = document.getElementById("results-trigger");
+    
+    resultsTrigger.addEventListener("click", () => {
+        searchMovies(searchFieldEl.value);
+    });
 }
 
 const searchMovies = async (query) => {
@@ -70,7 +47,7 @@ const searchMovies = async (query) => {
     // const searchUrl = `https://www.omdbapi.com/?apikey=fc83c46c&s=${query}`
     // const searchUrl = `https://imdb-api.com/en/API/Trailer/k_dymzyouh/tt1375666`
 
-    console.log(searchUrl);
+    console.log(searchUrl,"triggerrrr clicked");
     try {
         const response = await fetch(searchUrl);
         const jsonData = await response.json();
@@ -78,7 +55,7 @@ const searchMovies = async (query) => {
         const list = document.getElementById(RESULTS_LIST_ID);
         list.innerHTML = "";
         const droplist = document.getElementById("dropdown1");
-        droplist.innerHTML = "";
+        droplist.innerHTML = "results loading";
         renderResults(jsonData.results);
         
     } catch (error) {
