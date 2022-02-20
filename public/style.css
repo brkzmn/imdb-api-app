@@ -25,7 +25,7 @@
 
 #results-field {
     border: 2px solid #E2B740;
-    min-width: 30%;
+    width: 100%;
     display: inline-block;
 }
 
@@ -106,4 +106,8 @@ label {
     padding-bottom: 10px;
     padding-right: 5px;
     padding-left: 5px;
+}
+
+#dropdown1 {
+    height: 50vh;
 }
