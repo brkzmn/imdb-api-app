@@ -1,6 +1,7 @@
 
+import { getTrailerElement } from "../view/trailerView.js";
 
-export const getTrailerElement = async (movieId, title) => {
+export const initTrailerElement = async (movieId, title) => {
     const trailerUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=0ebff7764b918b4ccc3850487ed1f39a&language=en-US`
     const data = await fetch(trailerUrl);
     const jsonData = await data.json();
@@ -15,4 +16,8 @@ export const getTrailerElement = async (movieId, title) => {
     console.log(filteredData,"right movie video key");
     const { key } = filteredData[0];
     console.log(key);
+    const trailerElement = getTrailerElement(key);
+    const infoWrapper = document.getElementById("info-wrapper");
+    infoWrapper.appendChild(trailerElement);
+
 }

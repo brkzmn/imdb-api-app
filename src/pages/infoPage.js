@@ -1,6 +1,6 @@
 import { USER_INTERFACE_ID } from "../constants.js";
 import { getMovieInfoElement } from "../view/infoView.js";
-import { getTrailerElement } from "./trailerElPage.js";
+import { initTrailerElement } from "./trailerElPage.js";
 
 export const initMovieInfoElement = async (movieID) => {
 
@@ -23,7 +23,7 @@ export const initMovieInfoElement = async (movieID) => {
         const moviePlot = document.getElementById("movie-plot");
         moviePlot.innerHTML = overview;
         getMovieGenre(genres);
-        getTrailerElement(id, original_title)
+        initTrailerElement(id, original_title)
         
     } catch (error) {
         const infoWrapper = document.getElementById("info-wrapper");
