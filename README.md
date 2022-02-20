@@ -1,6 +1,6 @@
 # Getting Started
 
-You can take a look my SPA on here : https://brkzmn.github.io/browser-quiz/
+You can take a look my SPA on here : https://brkzmn.github.io/imdb-api-app/
 
 ## Development
 
