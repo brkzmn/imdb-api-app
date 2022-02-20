@@ -4,7 +4,7 @@ You can take a look my SPA on here : https://brkzmn.github.io/imdb-api-app/
 
 ## Development
 
-To run this project locally you will need to open `index.html` in your browser using a local server. LiveServer, `http-server`, `study-lenses`, or any other local static server will work.
+<!-- To run this project locally you will need to open `index.html` in your browser using a local server. LiveServer, `http-server`, `study-lenses`, or any other local static server will work. -->
 
 
 # Structure
