@@ -9,6 +9,7 @@ To run this project locally you will need to open `index.html` in your browser u
 
 # Structure
 
+<!--
 Let's run through the folders:
 
 ```
@@ -31,3 +32,4 @@ index.html
 - `app.js` this file our initialisation code. Generally this code should only run once and starts the application
 - `data.js` this is our data model. Anything we need to store in the browser we place inside the data file
 - `router.js` this file will transition the app from one page to the other and clear the HTML.
+-->
