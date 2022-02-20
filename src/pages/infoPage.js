@@ -1,5 +1,6 @@
 import { USER_INTERFACE_ID } from "../constants.js";
 import { getMovieInfoElement } from "../view/infoView.js";
+import { getTrailerElement } from "./trailerElPage.js";
 
 export const initMovieInfoElement = async (movieID) => {
 
@@ -11,7 +12,7 @@ export const initMovieInfoElement = async (movieID) => {
     
         //getting movie infos by destructuring 
 
-        const {original_title, overview, genres, release_date, poster_path} = jsonData;
+        const {original_title, overview, genres, release_date, poster_path, id} = jsonData;
         const infoWrapper = document.getElementById("info-wrapper");
         infoWrapper.innerHTML = "";
         const imgSrc = `https://image.tmdb.org/t/p/w500/${poster_path}`
@@ -22,6 +23,7 @@ export const initMovieInfoElement = async (movieID) => {
         const moviePlot = document.getElementById("movie-plot");
         moviePlot.innerHTML = overview;
         getMovieGenre(genres);
+        getTrailerElement(id, original_title)
         
     } catch (error) {
         const infoWrapper = document.getElementById("info-wrapper");
