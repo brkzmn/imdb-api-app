@@ -11,14 +11,10 @@ export const getSearchElement = () => {
         <input type="text" id="search-field" placeholder="Search movie...">
         <a id="results-trigger" class='dropdown-trigger btn waves-effect waves-light yellow accent-4' href='#' data-target='dropdown1'>SEARCH <i class="material-icons">search</i></a>
     </div>
-    <div id="results-field">
-        <ul id="results-list"></ul>
-    </div>
     <ul id='dropdown1' class='dropdown-content'>
-        <li>place HOLDER</li>
+        <li>NO MATCHING MOVIES FOUND</li>
     </ul>
     <div id="info-wrapper"></div>
-
     `
     return element;
 }
