@@ -8,14 +8,12 @@ import { RESULTS_LIST_ID } from "../constants.js";
 import { initMovieInfoElement } from "../pages/infoPage.js";
 
 
-
 export const initSearchPage = () => {
     const searchElement = getSearchElement();
     const userInterface = document.getElementById(USER_INTERFACE_ID);
     userInterface.appendChild(searchElement);
 
     const searchFieldEl = document.getElementById(SEARCH_FIELD_ID);
-    // searchFieldEl.addEventListener("click", searchMovies);
     showResults();
     
 }
@@ -63,18 +61,16 @@ const searchMovies = async (query) => {
     try {
         const response = await fetch(searchUrl);
         console.log(response, "response");
-        if(response.ok) {
-            const jsonData = await response.json();
-            console.log(jsonData,"status ok");
-            if(jsonData.results.length === 0) {
-                throw new Error("MOVIE NOT FOUND");
-            }
-
-            setTimeout(() => {
-                renderResults(jsonData.results);
-            }, 200);
+        const jsonData = await response.json();
+        console.log(jsonData,"status ok");
+        if(jsonData.results.length === 0) {
+            throw new Error("MOVIE NOT FOUND");
         }
-        
+
+        setTimeout(() => {
+            renderResults(jsonData.results);
+        }, 200);
+
     } catch (error) {
         console.log(error.message);
         setTimeout(() => {
@@ -98,7 +94,6 @@ const renderResults = (resultsArr) => {
     });
 
     chooseMovie();
-
 }
 
 const chooseMovie = () => {

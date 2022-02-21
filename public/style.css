@@ -37,9 +37,9 @@
     list-style-type: none;
 }
 
-#results-list li:hover {
+/* #results-list li:hover {
     background-color: #E2B740;
-}
+} */
 #info-wrapper {
 
     background-color: #313131;
@@ -178,10 +178,21 @@ label {
     text-align: center;
 }
 
-.dropdown-content .error-message {
+.dropdown-content .error-message, .error-message{
     font-size: 2rem;
     padding: 10px;
     color: #f4511e;
     font-weight: bold;
     text-align: center;
+}
+
+#trailer-element {
+
+}
+
+#trailer-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 40px;
 }

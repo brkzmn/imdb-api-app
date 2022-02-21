@@ -29,7 +29,7 @@ export const initMovieInfoElement = async (movieID) => {
     } catch (error) {
         const infoWrapper = document.getElementById("info-wrapper");
         infoWrapper.innerHTML = String.raw`
-        <h1>OOOPS, something went wrong</h1>
+        <h1>OOPS, something went wrong!</h1>
         <h2>"${error.message}"</h2>
         `
     }
