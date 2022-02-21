@@ -18,7 +18,6 @@ export const getSearchElement = () => {
         <li>NO MATCHING MOVIES FOUND</li>
     </ul>
     <div id="info-wrapper"></div>
-
     `
     return element;
 }
