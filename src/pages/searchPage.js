@@ -38,11 +38,25 @@ const showResults = () => {
     const resultsTrigger = document.getElementById("results-trigger");
     
     resultsTrigger.addEventListener("click", () => {
+        if(searchFieldEl.value.length === 0) {
+            const droplist = document.getElementById("dropdown1");
+            droplist.innerHTML = "";
+        }
         searchMovies(searchFieldEl.value);
     });
 }
 
 const searchMovies = async (query) => {
+    const searchFieldEl = document.getElementById(SEARCH_FIELD_ID);
+    if(searchFieldEl.value.length !== 0) {
+        
+        const droplist = document.getElementById("dropdown1");
+        droplist.innerHTML = String.raw`
+            <li class="list-center">
+                <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            </li>
+        `
+    }
     const searchUrl = `https://api.themoviedb.org/3/search/movie?api_key=0ebff7764b918b4ccc3850487ed1f39a&language=en-US&query=${query}&page=1`
     // const searchUrl = `https://www.omdbapi.com/?apikey=fc83c46c&s=${query}`
     // const searchUrl = `https://imdb-api.com/en/API/Trailer/k_dymzyouh/tt1375666`
@@ -59,11 +73,15 @@ const searchMovies = async (query) => {
             }
             const list = document.getElementById(RESULTS_LIST_ID);
             list.innerHTML = "";
-            const droplist = document.getElementById("dropdown1");
-            droplist.innerHTML = "<li>RESULTS LOADING</li>";
+            // const droplist = document.getElementById("dropdown1");
+            // droplist.innerHTML = String.raw`
+            //     <li class="list-center">
+            //         <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+            //     </li>
+            // `
             setTimeout(() => {
                 renderResults(jsonData.results);
-            }, 0);
+            }, 2000);
         }
         
     } catch (error) {
@@ -81,6 +99,7 @@ const renderResults = (resultsArr) => {
     droplist.innerHTML = "";
     resultsArr.forEach(movieInfo => {
         const movieItem = document.createElement("li");
+        // movieItem.classList.add("list-center");
         movieItem.innerText = movieInfo.title;
         movieItem.id = movieInfo.id;
         // list.appendChild(movieItem);

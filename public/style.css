@@ -122,12 +122,14 @@ label {
     height: 80px;
 }
 .lds-ellipsis div {
+    text-align: center;
     position: absolute;
     top: 33px;
     width: 13px;
     height: 13px;
     border-radius: 50%;
-    background: #fff;
+    /* background: #fff; */
+    background-color: #ffd600;
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 .lds-ellipsis div:nth-child(1) {
@@ -171,3 +173,7 @@ label {
     }
 }
 
+
+.dropdown-content .list-center {
+    text-align: center;
+}
