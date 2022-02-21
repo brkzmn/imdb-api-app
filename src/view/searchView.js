@@ -15,6 +15,9 @@ export const getSearchElement = () => {
         <li>NO MATCHING MOVIES FOUND</li>
     </ul>
     <div id="info-wrapper"></div>
+    <footer class="footer-container">
+        <p>© 2022 brkzmn </p>
+    </footer>
     `
     return element;
 }
