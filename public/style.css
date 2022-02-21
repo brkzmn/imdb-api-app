@@ -177,3 +177,11 @@ label {
 .dropdown-content .list-center {
     text-align: center;
 }
+
+.dropdown-content .error-message {
+    font-size: 2rem;
+    padding: 10px;
+    color: #f4511e;
+    font-weight: bold;
+    text-align: center;
+}

@@ -71,36 +71,29 @@ const searchMovies = async (query) => {
             if(jsonData.results.length === 0) {
                 throw new Error("MOVIE NOT FOUND");
             }
-            const list = document.getElementById(RESULTS_LIST_ID);
-            list.innerHTML = "";
-            // const droplist = document.getElementById("dropdown1");
-            // droplist.innerHTML = String.raw`
-            //     <li class="list-center">
-            //         <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
-            //     </li>
-            // `
+
             setTimeout(() => {
                 renderResults(jsonData.results);
-            }, 2000);
+            }, 200);
         }
         
     } catch (error) {
         console.log(error.message);
-        const list = document.getElementById(RESULTS_LIST_ID);
-        list.innerHTML = `${error.message}`;
+/*         const list = document.getElementById(RESULTS_LIST_ID);
+        list.innerHTML = `${error.message}`; */
         setTimeout(() => {
             const droplist = document.getElementById("dropdown1");
             droplist.innerHTML = String.raw`
-            <li>${error.message}</li>
+            <li class="error-message">${error.message}</li>
             `
-        }, 4000)
+        }, 200)
     }
 }
 
 const renderResults = (resultsArr) => {
-    const list = document.getElementById(RESULTS_LIST_ID);
+    // const list = document.getElementById(RESULTS_LIST_ID);
     console.log(resultsArr);
-    list.innerHTML = "";
+    // list.innerHTML = "";
     const droplist = document.getElementById("dropdown1");
     droplist.innerHTML = "";
     resultsArr.forEach(movieInfo => {
