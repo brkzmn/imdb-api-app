@@ -7,7 +7,6 @@ import { RESULTS_FIELD_ID } from "../constants.js";
 import { RESULTS_LIST_ID } from "../constants.js";
 import { initMovieInfoElement } from "../pages/infoPage.js";
 
-let searchTimeOutToken = 0;
 
 export const initSearchPage = () => {
     const searchElement = getSearchElement();
@@ -25,8 +24,6 @@ const showResults = () => {
     searchFieldEl.addEventListener("keyup", (e) => {
 
         if(e.target.value.trim().length === 0) {
-            // const list = document.getElementById(RESULTS_LIST_ID);
-            // list.innerHTML = "PLEASE WRITE A MOVIE NAME";
             return;
         }
         const elems = document.querySelectorAll('.dropdown-trigger');
@@ -79,8 +76,6 @@ const searchMovies = async (query) => {
         
     } catch (error) {
         console.log(error.message);
-/*         const list = document.getElementById(RESULTS_LIST_ID);
-        list.innerHTML = `${error.message}`; */
         setTimeout(() => {
             const droplist = document.getElementById("dropdown1");
             droplist.innerHTML = String.raw`
@@ -91,17 +86,13 @@ const searchMovies = async (query) => {
 }
 
 const renderResults = (resultsArr) => {
-    // const list = document.getElementById(RESULTS_LIST_ID);
     console.log(resultsArr);
-    // list.innerHTML = "";
     const droplist = document.getElementById("dropdown1");
     droplist.innerHTML = "";
     resultsArr.forEach(movieInfo => {
         const movieItem = document.createElement("li");
-        // movieItem.classList.add("list-center");
         movieItem.innerText = movieInfo.title;
         movieItem.id = movieInfo.id;
-        // list.appendChild(movieItem);
         droplist.appendChild(movieItem);
     });
 
@@ -114,7 +105,6 @@ const chooseMovie = () => {
     console.log(movieItems);
     movieItems.forEach(movieItem => {
         movieItem.addEventListener("click", (e) => {
-            console.log(e.target.id, "imdb id");
             initMovieInfoElement(e.target.id);
         })
     })
