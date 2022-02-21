@@ -1,6 +1,7 @@
 import { USER_INTERFACE_ID } from "../constants.js";
 import { getMovieInfoElement } from "../view/infoView.js";
-import { initTrailerElement } from "./trailerElPage.js";
+import { initTrailerElement } from "./trailerPage.js";
+import { initTrailerSection } from "./trailerPage.js";
 
 export const initMovieInfoElement = async (movieID) => {
 
@@ -23,12 +24,12 @@ export const initMovieInfoElement = async (movieID) => {
         const moviePlot = document.getElementById("movie-plot");
         moviePlot.innerHTML = overview;
         getMovieGenre(genres);
-        initTrailerElement(id, original_title)
+        initTrailerSection(id, original_title)
         
     } catch (error) {
         const infoWrapper = document.getElementById("info-wrapper");
         infoWrapper.innerHTML = String.raw`
-        <h1>OOOPS, something went wrong</h1>
+        <h1>OOPS, something went wrong!</h1>
         <h2>"${error.message}"</h2>
         `
     }
@@ -41,4 +42,7 @@ const getMovieGenre = (genreArr) => {
         const movieGenreList = document.getElementById("movie-genre");
         movieGenreList.appendChild(genreItem);
     });
+    const pageHeight = document.getElementById("user-interface").clientHeight;
+    console.log(pageHeight,"height before");
+
 }
