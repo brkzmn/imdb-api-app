@@ -28,7 +28,6 @@ body {
 }
 
 
-
 #results-field {
     border: 2px solid #E2B740;
     width: 100%;
@@ -65,6 +64,7 @@ body {
 
 #movie-plot {
     width: 45%;
+    padding: 20px;
 }
 
 
@@ -117,6 +117,11 @@ label {
 
 #dropdown1 {
     height: 50vh;
+}
+
+#trailer-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* #######loader */
@@ -216,4 +221,68 @@ footer.footer-container {
     font-family: sans-serif;
     font-size: 1rem;
     font-weight: bold;
+}
+
+@media screen and (max-width: 992px) {
+    #info-section {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    #info-section img {
+        width: 100%;
+        height: auto;
+    }
+
+    #movie-plot {
+        width: 100%;
+    }
+
+    #trailer-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 40px;
+    }
+
+    #trailer-container iframe {
+        width: 100%;
+    }
+
+    #movie-genre li {
+        padding: 10px;
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 480px){
+    #trailer-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 40px;
+    }
+
+    #trailer-container iframe {
+        width: 100%;
+    }
+
+    #info-section {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    #info-section img {
+        width: 100%;
+        height: auto;
+    }
+
+    #movie-plot {
+        width: 100%;
+    }
+
+    #movie-genre li {
+        padding: 5px;
+        margin: 5px;
+    }
 }
