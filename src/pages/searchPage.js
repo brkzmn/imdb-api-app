@@ -25,8 +25,8 @@ const showResults = () => {
     searchFieldEl.addEventListener("keyup", (e) => {
 
         if(e.target.value.trim().length === 0) {
-            const list = document.getElementById(RESULTS_LIST_ID);
-            list.innerHTML = "PLEASE WRITE A MOVIE NAME";
+            // const list = document.getElementById(RESULTS_LIST_ID);
+            // list.innerHTML = "PLEASE WRITE A MOVIE NAME";
             return;
         }
         const elems = document.querySelectorAll('.dropdown-trigger');
@@ -40,7 +40,7 @@ const showResults = () => {
     resultsTrigger.addEventListener("click", () => {
         if(searchFieldEl.value.length === 0) {
             const droplist = document.getElementById("dropdown1");
-            droplist.innerHTML = "";
+            droplist.innerHTML = "<li>PLEASE WRITE A MOVIE NAME</li>";
         }
         searchMovies(searchFieldEl.value);
     });
@@ -88,6 +88,12 @@ const searchMovies = async (query) => {
         console.log(error.message);
         const list = document.getElementById(RESULTS_LIST_ID);
         list.innerHTML = `${error.message}`;
+        setTimeout(() => {
+            const droplist = document.getElementById("dropdown1");
+            droplist.innerHTML = String.raw`
+            <li>${error.message}</li>
+            `
+        }, 4000)
     }
 }
 
