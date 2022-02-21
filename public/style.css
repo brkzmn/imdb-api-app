@@ -8,6 +8,7 @@
 body {
     max-width: 100%;
 }
+
 #user-interface {
     color: #FFFFFF;
     background-color: #1F1F1F;
@@ -27,7 +28,6 @@ body {
     width: 100%;
 }
 
-
 #results-field {
     border: 2px solid #E2B740;
     width: 100%;
@@ -42,9 +42,6 @@ body {
     list-style-type: none;
 }
 
-/* #results-list li:hover {
-    background-color: #E2B740;
-} */
 #info-wrapper {
 
     background-color: #313131;
@@ -69,7 +66,8 @@ body {
 
 
 #search-wrapper {
-    width: 100vw;
+    width: 100%;
+    background-color: #121212;
 }
 
 #movie-genre li {
@@ -78,10 +76,6 @@ body {
     padding: 15px;
     border: 3px solid #AEAEAE;
     margin: 5px;
- /*    border-top-left-radius: 30%;
-    border-top-right-radius: 30%;
-    border-bottom-left-radius: 50%;
-    border-bottom-right-radius: 50%; */
     border-radius: 20%;
 }
 
@@ -103,12 +97,13 @@ a.btn {
     background-color: #E2B740;
 }
 
-label {
+h1.logo {
+    display: inline-block;
     background-color: #FBD74A;
     color: black;
     font-size: 1rem;
     font-weight: bold;
-    height: 100%;
+    margin: 10px 10px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 5px;
@@ -216,7 +211,7 @@ footer.footer-container {
     color: #1F1F1F;
     margin: 0;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
     text-align: center;
     font-family: sans-serif;
     font-size: 1rem;
@@ -253,6 +248,11 @@ footer.footer-container {
         padding: 10px;
         margin: 10px;
     }
+
+    #search-field {
+        max-width: 65%;
+        margin-left: 5px;
+    }
 }
 
 @media screen and (max-width: 480px){
@@ -284,5 +284,18 @@ footer.footer-container {
     #movie-genre li {
         padding: 5px;
         margin: 5px;
+    }
+
+    #search-field {
+        max-width: 65%;
+        margin-left: 5px;
+    }
+
+    h1.logo {
+        display: block;
+        margin-top: 0;
+        text-align: center;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
