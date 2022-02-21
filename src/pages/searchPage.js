@@ -8,6 +8,7 @@ import { RESULTS_LIST_ID } from "../constants.js";
 import { initMovieInfoElement } from "../pages/infoPage.js";
 
 
+
 export const initSearchPage = () => {
     const searchElement = getSearchElement();
     const userInterface = document.getElementById(USER_INTERFACE_ID);
@@ -107,5 +108,5 @@ const chooseMovie = () => {
         movieItem.addEventListener("click", (e) => {
             initMovieInfoElement(e.target.id);
         })
-    })
+    });
 }
