@@ -52,6 +52,9 @@ const searchMovies = async (query) => {
         const response = await fetch(searchUrl);
         const jsonData = await response.json();
         console.log(jsonData);
+        if(jsonData.results.length === 0) {
+            throw new Error("errorrr");
+        }
         const list = document.getElementById(RESULTS_LIST_ID);
         list.innerHTML = "";
         const droplist = document.getElementById("dropdown1");
@@ -61,7 +64,7 @@ const searchMovies = async (query) => {
     } catch (error) {
         console.log(error.message);
         const list = document.getElementById(RESULTS_LIST_ID);
-        list.innerHTML = "movie not found";
+        list.innerHTML = "MOVIE NOT FOUND";
     }
     
 }
