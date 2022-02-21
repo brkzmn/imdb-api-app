@@ -15,7 +15,7 @@ export const getSearchElement = () => {
         <ul id="results-list"></ul>
     </div>
     <ul id='dropdown1' class='dropdown-content'>
-        <li>place HOLDER</li>
+        <li>NO MATCHING MOVIES FOUND</li>
     </ul>
     <div id="info-wrapper"></div>
 

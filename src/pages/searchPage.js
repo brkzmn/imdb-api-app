@@ -26,7 +26,7 @@ const showResults = () => {
 
         if(e.target.value.trim().length === 0) {
             const list = document.getElementById(RESULTS_LIST_ID);
-            list.innerHTML = "please write a movie name";
+            list.innerHTML = "PLEASE WRITE A MOVIE NAME";
             return;
         }
         const elems = document.querySelectorAll('.dropdown-trigger');
@@ -50,23 +50,27 @@ const searchMovies = async (query) => {
     console.log(searchUrl,"triggerrrr clicked");
     try {
         const response = await fetch(searchUrl);
-        const jsonData = await response.json();
-        console.log(jsonData);
-        if(jsonData.results.length === 0) {
-            throw new Error("errorrr");
+        console.log(response, "response");
+        if(response.ok) {
+            const jsonData = await response.json();
+            console.log(jsonData,"status ok");
+            if(jsonData.results.length === 0) {
+                throw new Error("MOVIE NOT FOUND");
+            }
+            const list = document.getElementById(RESULTS_LIST_ID);
+            list.innerHTML = "";
+            const droplist = document.getElementById("dropdown1");
+            droplist.innerHTML = "<li>RESULTS LOADING</li>";
+            setTimeout(() => {
+                renderResults(jsonData.results);
+            }, 0);
         }
-        const list = document.getElementById(RESULTS_LIST_ID);
-        list.innerHTML = "";
-        const droplist = document.getElementById("dropdown1");
-        droplist.innerHTML = "results loading";
-        renderResults(jsonData.results);
         
     } catch (error) {
         console.log(error.message);
         const list = document.getElementById(RESULTS_LIST_ID);
-        list.innerHTML = "MOVIE NOT FOUND";
+        list.innerHTML = `${error.message}`;
     }
-    
 }
 
 const renderResults = (resultsArr) => {
