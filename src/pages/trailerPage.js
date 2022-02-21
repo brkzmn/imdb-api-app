@@ -23,7 +23,7 @@ export const initTrailerElement = async (movieId, title) => {
         infoWrapper.appendChild(trailerElement);
     } catch (error) {
         console.log(`trailer error ${error.message}`);
-        const trailerSection = document.getElementById("trailer-section");
+        const trailerSection = document.getElementById("trailer-container");
         trailerSection.innerHTML = String.raw`
         <p class="error-message">${error.message}</p>
         `
@@ -34,7 +34,7 @@ export const initTrailerElement = async (movieId, title) => {
 
 export const initTrailerSection = (movieId, title) => {
     const trailerSection = document.createElement("div");
-    trailerSection.id = "trailer-section";
+    trailerSection.id = "trailer-container";
     const infoWrapper = document.getElementById("info-wrapper")
     infoWrapper.appendChild(trailerSection);
 
