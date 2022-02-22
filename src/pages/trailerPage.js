@@ -1,10 +1,9 @@
-
-import { getTrailerElement } from "../view/trailerView.js";
-import { getTrailerLoader } from "../view/trailerView.js";
+import { USER_INTERFACE_ID, API_KEY, INFO_WRAPPER_ID, TRAILER_CONTAINER_ID, TRAILER_TRIGGER_ID } from "../constants.js";
+import { getTrailerElement, getTrailerLoader } from "../view/trailerView.js";
 
 export const initTrailerElement = async (movieId, title) => {
     try {
-        const trailerUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=0ebff7764b918b4ccc3850487ed1f39a&language=en-US`
+        const trailerUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`
         const data = await fetch(trailerUrl);
         if(data.ok) {
             const jsonData = await data.json();
@@ -19,12 +18,12 @@ export const initTrailerElement = async (movieId, title) => {
             }
             const { key } = filteredData[0];
             const trailerElement = getTrailerElement(key);
-            const infoWrapper = document.getElementById("info-wrapper");
+            const infoWrapper = document.getElementById(INFO_WRAPPER_ID);
             infoWrapper.appendChild(trailerElement);
         }
     } catch (error) {
-        console.log(`trailer error ${error.message}`);
-        const trailerSection = document.getElementById("trailer-container");
+        console.log(`${error.message}`);
+        const trailerSection = document.getElementById(TRAILER_CONTAINER_ID);
         trailerSection.innerHTML = String.raw`
         <p class="error-message">${error.message}</p>
         `
@@ -33,16 +32,15 @@ export const initTrailerElement = async (movieId, title) => {
 
 export const initTrailerSection = (movieId, title) => {
     const trailerSection = document.createElement("div");
-    trailerSection.id = "trailer-container";
-    const infoWrapper = document.getElementById("info-wrapper")
+    trailerSection.id = TRAILER_CONTAINER_ID;
+    const infoWrapper = document.getElementById(INFO_WRAPPER_ID)
     infoWrapper.appendChild(trailerSection);
 
-    const trailerBtn = document.getElementById("trailer-trigger");
+    const trailerBtn = document.getElementById(TRAILER_TRIGGER_ID);
     trailerBtn.addEventListener("click", async () => {
         getTrailerLoader();
         await initTrailerElement(movieId, title); 
-        const pageHeight = document.getElementById("user-interface").clientHeight;
+        const pageHeight = document.getElementById(USER_INTERFACE_ID).clientHeight;
         window.scrollTo(0, pageHeight);
-        console.log(pageHeight,"height after");
     });
 }

@@ -4,6 +4,4 @@ const loadApp = () => {
     initSearchPage();
 }
 
-
-
 window.addEventListener("load", loadApp);
