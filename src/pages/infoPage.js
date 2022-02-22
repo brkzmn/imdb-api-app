@@ -8,23 +8,25 @@ export const initMovieInfoElement = async (movieID) => {
     try {
         const infoUrl = `https://api.themoviedb.org/3/movie/${movieID}?api_key=0ebff7764b918b4ccc3850487ed1f39a&language=en-US`
         const response = await fetch(infoUrl);
-        const jsonData = await response.json();
-        console.log(jsonData, "this is movie info details");
+        if(response.ok) {
+            const jsonData = await response.json();
+            console.log(jsonData, "this is movie info details");
+        
+            //getting movie infos by destructuring 
     
-        //getting movie infos by destructuring 
-
-        const {original_title, overview, genres, release_date, poster_path, id} = jsonData;
-        const infoWrapper = document.getElementById("info-wrapper");
-        infoWrapper.innerHTML = "";
-        const imgSrc = `https://image.tmdb.org/t/p/w500/${poster_path}`
-        const infoElement = getMovieInfoElement(release_date, imgSrc, original_title);
-        infoWrapper.appendChild(infoElement);
-        const movieTitle = document.getElementById("movie-title");
-        movieTitle.innerHTML = original_title;
-        const moviePlot = document.getElementById("movie-plot");
-        moviePlot.innerHTML = overview;
-        getMovieGenre(genres);
-        initTrailerSection(id, original_title)
+            const {original_title, overview, genres, release_date, poster_path, id} = jsonData;
+            const infoWrapper = document.getElementById("info-wrapper");
+            infoWrapper.innerHTML = "";
+            const imgSrc = `https://image.tmdb.org/t/p/w500/${poster_path}`
+            const infoElement = getMovieInfoElement(release_date, imgSrc, original_title);
+            infoWrapper.appendChild(infoElement);
+            const movieTitle = document.getElementById("movie-title");
+            movieTitle.innerHTML = original_title;
+            const moviePlot = document.getElementById("movie-plot");
+            moviePlot.innerHTML = overview;
+            getMovieGenre(genres);
+            initTrailerSection(id, original_title)
+        }
         
     } catch (error) {
         const infoWrapper = document.getElementById("info-wrapper");

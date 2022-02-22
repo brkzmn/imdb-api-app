@@ -58,19 +58,19 @@ const searchMovies = async (query) => {
     // const searchUrl = `https://www.omdbapi.com/?apikey=fc83c46c&s=${query}`
     // const searchUrl = `https://imdb-api.com/en/API/Trailer/k_dymzyouh/tt1375666`
 
-    console.log(searchUrl,"triggerrrr clicked");
     try {
         const response = await fetch(searchUrl);
-        console.log(response, "response");
-        const jsonData = await response.json();
-        console.log(jsonData,"status ok");
-        if(jsonData.results.length === 0) {
-            throw new Error("MOVIE NOT FOUND");
+        if(response.ok) {
+            const jsonData = await response.json();
+            console.log(jsonData,"status ok");
+            if(jsonData.results.length === 0) {
+                throw new Error("MOVIE NOT FOUND");
+            }
+    
+            setTimeout(() => {
+                renderResults(jsonData.results);
+            }, 200);
         }
-
-        setTimeout(() => {
-            renderResults(jsonData.results);
-        }, 200);
 
     } catch (error) {
         console.log(error.message);
