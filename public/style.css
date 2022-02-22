@@ -119,6 +119,18 @@ h1.logo {
     margin-bottom: 20px;
 }
 
+.container-background {
+    background-image: url(./assets/film.jpeg);
+    background-size: cover;
+}
+
+.slogan {
+    font-family:'Courier New', Courier, monospace;
+    font-size: 3rem;
+    font-style: italic;
+    font-weight: bolder;
+    color: #000000;
+}
 /* #######loader */
 
 .lds-ellipsis {
