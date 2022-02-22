@@ -39,6 +39,7 @@ const showResults = () => {
             droplist.innerHTML = "<li>PLEASE WRITE A MOVIE NAME</li>";
         }
         searchMovies(searchFieldEl.value);
+
     });
 }
 
@@ -102,6 +103,10 @@ const chooseMovie = () => {
     movieItems.forEach(movieItem => {
         movieItem.addEventListener("click", (e) => {
             initMovieInfoElement(e.target.id);
+
+            const infoWrapper = document.getElementById("info-wrapper");
+            if(infoWrapper.classList.contains("container-background"))
+            infoWrapper.classList.remove("container-background");
         })
     });
 }
