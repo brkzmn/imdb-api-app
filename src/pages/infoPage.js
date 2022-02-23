@@ -22,6 +22,8 @@ export const initMovieInfoElement = async (movieID) => {
             moviePlot.innerHTML = overview;
             getMovieGenre(genres);
             initTrailerSection(id, original_title)
+        } else {
+            throw new Error("HTTP ERROR");
         }
         
     } catch (error) {

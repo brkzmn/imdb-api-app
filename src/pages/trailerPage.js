@@ -20,6 +20,8 @@ export const initTrailerElement = async (movieId, title) => {
             const trailerElement = getTrailerElement(key);
             const infoWrapper = document.getElementById(INFO_WRAPPER_ID);
             infoWrapper.appendChild(trailerElement);
+        } else {
+            throw new Error("HTTP ERROR");
         }
     } catch (error) {
         console.log(`${error.message}`);

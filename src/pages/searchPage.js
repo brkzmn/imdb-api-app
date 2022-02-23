@@ -63,6 +63,8 @@ const searchMovies = async (query) => {
             setTimeout(() => {
                 renderResults(jsonData.results);
             }, LOADER_DURATION);
+        } else {
+            throw new Error("HTTP ERROR");
         }
 
     } catch (error) {
